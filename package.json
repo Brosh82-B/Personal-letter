@@ -1,0 +1,52 @@
+{
+  "name": "personal-letter",
+  "version": "0.1.1",
+  "type": "module",
+  "homepage": "https://Brosh82-B.github.io/personal-letter/",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.0",
+    "events": "^3.3.0",
+    "hebcal": "^2.3.2",
+    "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-notifications": "^1.7.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "test": "echo \"No test runner configured (Jest -> Vitest migration pending).\" && exit 0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "gh-pages": "^6.0.0",
+    "vite": "^5.2.0"
+  }
+}

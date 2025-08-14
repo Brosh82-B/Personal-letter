@@ -1,0 +1,13 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+  background-color: #632c91;
+  text-align: center;
+  padding: 3vh 5vw 3vh 5vw;
+  display: flex;
+}

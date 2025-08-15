@@ -1,8 +1,8 @@
 {
-  "name": "personal-letter",
+  "name": "Personal-letter",
   "version": "0.1.1",
   "type": "module",
-  "homepage": "https://Brosh82-B.github.io/personal-letter/",
+  "homepage": "https://Brosh82-B.github.io/Personal-letter/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

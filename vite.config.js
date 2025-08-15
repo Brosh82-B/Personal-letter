@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   // Set base for GitHub Pages based on package.json homepage
-  base: '/personal-letter/',
+  base: '/Personal-letter/',
   plugins: [react()],
   define: {
     global: 'globalThis',

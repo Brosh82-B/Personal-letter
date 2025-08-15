@@ -9,13 +9,14 @@ function App() {
   const formConfig = [
     { name: "fullName", label: "שם מלא", type: "text", defaultValue: "" },
     { name: "militaryId", label: "מ.א", type: "text", defaultValue: "" },
-    { name: "recruitDate ", label: "תאריך גיוס", type: "date", defaultValue: "" },
-    { name: "gdod", label: "גדוד", type: "text", defaultValue: "" },
-    { name: "ploga", label: "פלוגה", type: "text", defaultValue: "" },
-  
+    { name: "tz", label: "תעודת זהות", type: "text", defaultValue: "" },
+    { name: "role", label: "תפקיד", type: "text", defaultValue: "" },
+    { name: "unit", label: "יחידה", type: "text", defaultValue: "" },
+    { name: "startDate", label: "תאריך תחילת שירות סדיר", type: "date", defaultValue: "" },
+    { name: "endDate", label: "(לא חובה) תאריך סיום שירות סדיר", type: "date", defaultValue: "עדיין בשירות" },
     {
       name: "eventDescription",
-      label: "פירוט האירוע",
+      label: "עיקרי המכתב",
       type: "textarea",
       defaultValue: "",
     },
@@ -38,6 +39,7 @@ function App() {
           scriptUrl="https://script.google.com/macros/s/AKfycbzSZke_m75nwD4uUw9OYiRkp-gA3ZC6VXgvY9fuqNWpKqfHckEP8YVnLRD6V1KhFaxmew/exec"
         />
       </div>
+      
       <AppFooter />
       <NotificationContainer />
     </div>

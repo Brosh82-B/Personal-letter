@@ -54,6 +54,44 @@ const SelectField = ({
   </div>
 );
 
+// Reusable Textarea Component with auto-resize
+const TextareaField = ({
+  label,
+  name,
+  value,
+  onChange,
+  dir = "rtl",
+}) => {
+  const textareaRef = React.useRef(null);
+
+  const adjustHeight = () => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    }
+  };
+
+  React.useEffect(() => {
+    adjustHeight();
+  }, [value]);
+
+  return (
+    <div className="input-block">
+      <label className="form-input-label">{label}</label>
+      <textarea
+        ref={textareaRef}
+        name={name}
+        className="form-input"
+        dir={dir}
+        value={value}
+        onChange={onChange}
+        style={{ minHeight: '60px', resize: 'vertical' }}
+      />
+    </div>
+  );
+};
+
 const MainForm = ({
   formConfig,
   onSubmit,
@@ -149,12 +187,12 @@ const MainForm = ({
       NotificationManager.error("לא הצליח לייצר את הקובץ", "שגיאה", 3000);
     }
   };
-  const topMessage = `חיילים יקרים\nשימו לב,\nלאחר מילוי התשובות, הקובץ יורד כ-pdf, את הקובץ יש לשלוח לשלישות/ לנפגעים על מנת שיוזן במערכת.\nבנוסף, שימו לב שבשורות שכתוב עדים/מעורבים, לכתוב שמות ספציפיים של אנשים ולא "כל הצוות שלי"`;
+  const topMessage = `חיילים יקרים\nשימו לב,\nלאחר מילוי התשובות, הקובץ יורד כ-pdf, את הקובץ יש לשלוח לשלישות/ לנפגעים על מנת שיוזן במערכת.\nבנוסף, שימו לב שיש הוראות לתוכן המכתב בסוף העמוד`;
   const bottomMessage = `
   כאן בשבילכם,
 מדור נפגעים חטיבת גבעתי
 
-אחיה ס׳ רמ״ד- 0585970777  
+אחיה ס׳ רמ״ד - 058-5970777  
 יעל ע׳ רמ״ד- 054-3377526`;
 
   return (
@@ -184,6 +222,15 @@ const MainForm = ({
             options={field.options}
             dir={field.dir}
           />
+        ) : field.type === "textarea" ? (
+          <TextareaField
+            key={field.name}
+            label={field.label}
+            name={field.name}
+            value={formState[field.name]}
+            onChange={handleInputChange}
+            dir={field.dir}
+          />
         ) : (
           <InputField
             key={field.name}
@@ -196,6 +243,33 @@ const MainForm = ({
           />
         )
       )}
+      <div style={{direction: "rtl"}}>
+      <h4 style={{marginBottom: "0"}}>פירוט האירוע</h4>
+      <div>(יש לפרט כמה שיותר)</div>
+
+      <h4 style={{marginBottom: "0"}}>תאריך, מקום ושעה</h4>
+      <div>כתוב כאן את התאריך, המקום והשעה של האירוע.</div>
+
+      <h4 style={{marginBottom: "0"}}>מה התרחש באירוע</h4>
+      <div>פרט את מה שהתרחש באירוע.</div>
+
+      <h4 style={{marginBottom: "0"}}>השלכות וטיפולים</h4>
+      <ul style={{marginTop: "0"}}>
+        <li>אילו איברים נפגעו / סימפטומים של המצב הנפשי.</li>
+        <li>טיפול רפואי מרגע הפציעה ועד עכשיו.</li>
+        <li>במידה וקיים קושי כלכלי / החזרים:
+          <ul>
+            <li>יש לצרף מסמכים כגון קבלות, אבחנה מרופא שאינו מסוגל לעבוד, מכתב מהמעסיק.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4 style={{marginBottom: "0"}}>סיכום</h4>
+      <div>סיכום הפציעה וההשלכות ובקשה להכרה.</div>
+      <div>דוגמא: "אני מבקש לקבל הכרה במשרד הביטחון התאפשר לי לקבל את הטיפולים להם אני זקוק."</div>
+      <div>חתימה של החייל</div>
+      <div style={{marginBottom: "10px"}}>__________________________</div>
+    </div>
       <button
         className={`submit-button ${loading ? "loading" : ""}`}
         onClick={handleSubmit}
